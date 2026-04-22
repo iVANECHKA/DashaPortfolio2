@@ -1,30 +1,16 @@
 <script setup>
-const specialization = {
-  title: 'СПЕЦИАЛИЗАЦИЯ',
-  value: 'B2B, B2C, B2B2C',
-}
-
-const yearLabel = '©2026'
-
-const heroParts = [
-  { text: 'Привет! ', colorClass: 'base' },
-  { text: 'Я', colorClass: 'accent' },
-  {
-    text: ' Senior Product designer.Специализируюсь на мобильных интерфейсах.',
-    colorClass: 'base',
-  },
-]
+import { homeHeroContent, siteYearLabel } from '../../data/siteContent'
 </script>
 
 <template>
   <section aria-labelledby="hero-title" class="hero-section">
     <h1 id="hero-title" class="hero-title">
       <span
-        v-for="(part, index) in heroParts"
-        :key="index"
+        v-for="(part, index) in homeHeroContent.parts"
+        :key="`${part.tone}-${index}`"
         :class="[
           'hero-title__part',
-          part.colorClass === 'accent'
+          part.tone === 'accent'
             ? 'hero-title__part--accent'
             : 'hero-title__part--base',
         ]"
@@ -32,23 +18,24 @@ const heroParts = [
         {{ part.text }}
       </span>
     </h1>
+
     <div class="hero-meta">
       <div class="hero-meta__specialization">
         <h2 class="hero-meta__title">
-          {{ specialization.title }}
+          {{ homeHeroContent.specialization.title }}
         </h2>
+
         <div class="hero-meta__value-wrap">
           <p class="hero-meta__value">
-            {{ specialization.value }}
+            {{ homeHeroContent.specialization.value }}
           </p>
         </div>
       </div>
 
       <p class="hero-meta__year">
-        {{ yearLabel }}
+        {{ siteYearLabel }}
       </p>
     </div>
-
   </section>
 </template>
 

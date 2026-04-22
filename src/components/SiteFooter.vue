@@ -1,36 +1,20 @@
 <script setup>
-const footer = {
-  title:
-    'Спасибо, что ознакомились<br />с портфолио, буду рада обсудить детали в рамках интервью',
-}
-
-const contacts = [
-  {
-    label: 'Эл. почта',
-    value: 'kormil.dashu@gmail.com',
-    href: 'mailto:kormil.dashu@gmail.com',
-    iconSrc: 'img/vector.svg',
-  },
-  {
-    label: 'Телеграм',
-    value: '@daria_kormilitsyna',
-    href: 'https://t.me/daria_kormilitsyna',
-    iconSrc: 'img/image.svg',
-  },
-]
-
-const yearLabel = '©2026'
+import {
+  homeFooterContent,
+  siteContacts,
+  siteYearLabel,
+} from '../data/siteContent'
 </script>
 
 <template>
   <footer id="contacts" class="site-footer">
     <div class="site-footer__content">
-      <p class="site-footer__title" v-html="footer.title"></p>
+      <p class="site-footer__title" v-html="homeFooterContent.title"></p>
 
       <div class="site-footer__bottom">
         <address class="site-footer__contacts">
           <div
-            v-for="contact in contacts"
+            v-for="contact in siteContacts"
             :key="contact.label"
             class="site-footer__contact"
           >
@@ -58,7 +42,7 @@ const yearLabel = '©2026'
         </address>
 
         <p class="site-footer__year">
-          {{ yearLabel }}
+          {{ siteYearLabel }}
         </p>
       </div>
     </div>
@@ -150,11 +134,9 @@ const yearLabel = '©2026'
 }
 
 .site-footer__icon {
-  position: absolute;
-  top: 16.67%;
-  left: 16.67%;
-  width: 83.33%;
-  height: 83.33%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .site-footer__contact-link {

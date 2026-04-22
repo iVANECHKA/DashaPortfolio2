@@ -1,7 +1,7 @@
 <script setup>
-import AboutSection from '../components/AboutSection.vue'
-import HeroSection from '../components/HeroSection.vue'
-import ProjectsSection from '../components/ProjectsSection.vue'
+import HomeAboutSection from '../components/home/HomeAboutSection.vue'
+import HomeHeroSection from '../components/home/HomeHeroSection.vue'
+import HomeProjectsSection from '../components/home/HomeProjectsSection.vue'
 import SiteFooter from '../components/SiteFooter.vue'
 import SiteHeader from '../components/SiteHeader.vue'
 </script>
@@ -11,9 +11,9 @@ import SiteHeader from '../components/SiteHeader.vue'
     <SiteHeader />
 
     <main class="page-main">
-      <HeroSection />
-      <ProjectsSection />
-      <AboutSection />
+      <HomeHeroSection />
+      <HomeProjectsSection />
+      <HomeAboutSection />
     </main>
 
     <SiteFooter />

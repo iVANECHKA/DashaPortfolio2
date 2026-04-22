@@ -1,20 +1,21 @@
 <script setup>
-import { capitalCaseConceptImages } from '../../data/capitalCase'
+import { capitalCaseConcept } from '../../data/capitalCase'
+import CapitalCaseContentRow from './shared/CapitalCaseContentRow.vue'
 </script>
 
 <template>
-  <div class="frame-22">
+  <section class="frame-22">
     <div class="frame-23">
-      <div class="text-wrapper-10">ВИЗУАЛЬНАЯ КОНЦЕПЦИЯ</div>
-      <p class="text-wrapper-16">
-        Разработка UI началась с опросов пользователей, которые увидели 3
-        направления. Собрав весь фидбэк мы с коллегой придумали следующее
-      </p>
+      <CapitalCaseContentRow :label="capitalCaseConcept.intro.label">
+        <p :class="capitalCaseConcept.intro.textClass">
+          {{ capitalCaseConcept.intro.content }}
+        </p>
+      </CapitalCaseContentRow>
     </div>
 
     <div class="frame-24">
       <img
-        v-for="image in capitalCaseConceptImages"
+        v-for="image in capitalCaseConcept.images"
         :key="image.src"
         :class="image.className"
         :src="image.src"
@@ -23,17 +24,13 @@ import { capitalCaseConceptImages } from '../../data/capitalCase'
     </div>
 
     <div class="frame-23">
-      <div class="text-wrapper-10">О СОЗДАНИИ КОНЦЕПЦИИ</div>
-      <p class="text-wrapper-12">
-        Нам было важно сделать продукт с особенным запоминающимся визуалом, но
-        хорошо читаемым и удобным, поэтому главными принципами стали: визуальная
-        плотность в интерфейсах, но с добавлением воздуха в ключевых точках,
-        четкая иерархия и структура, нейтральные цвета, и скругления, которые
-        позволяют видеть интерфейс более дружелюбным и мягким, при этом не
-        снижает уровень серьезности.
-      </p>
+      <CapitalCaseContentRow :label="capitalCaseConcept.outro.label">
+        <p :class="capitalCaseConcept.outro.textClass">
+          {{ capitalCaseConcept.outro.content }}
+        </p>
+      </CapitalCaseContentRow>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>
@@ -41,34 +38,15 @@ import { capitalCaseConceptImages } from '../../data/capitalCase'
   display: flex;
   flex-direction: column;
   width: 1920px;
+  min-height: 1698px;
   align-items: flex-start;
   gap: 120px;
   padding: 100px 0;
-  position: absolute;
-  top: 5920px;
-  left: 0;
 }
 
 .frame-23 {
-  display: flex;
   width: 1920px;
-  align-items: flex-start;
-  gap: 80px;
   padding: 0 0 0 52px;
-  position: relative;
-  flex: 0 0 auto;
-}
-
-.text-wrapper-10 {
-  position: relative;
-  width: 672px;
-  margin-top: -1px;
-  color: #1c1f23;
-  font-size: 32px;
-  line-height: normal;
-  font-family: 'Raleway', Helvetica, Arial, sans-serif;
-  font-weight: 500;
-  letter-spacing: 0;
 }
 
 .text-wrapper-16 {

@@ -1,35 +1,49 @@
 <script setup>
-import { capitalCaseMeta } from '../../data/capitalCase'
+import { capitalCaseHero } from '../../data/capitalCase'
 </script>
 
 <template>
-  <div>
-    <div class="text-wrapper-3">Capital.com</div>
+  <section class="capital-case-hero">
+    <div class="text-wrapper-3">{{ capitalCaseHero.title }}</div>
 
     <div class="frame-2">
       <p class="p">
-        Capital.com — международная CFD-платформа, 5000+ инструментов: акции,
-        индексы, криптовалюта, форекс, сырьё.
+        {{ capitalCaseHero.description }}
       </p>
 
       <div class="frame-3">
-        <div v-for="item in capitalCaseMeta" :key="item.label" class="frame-4">
+        <div
+          v-for="item in capitalCaseHero.meta"
+          :key="item.label"
+          class="frame-4"
+        >
           <div class="text-wrapper-4">{{ item.label }}</div>
           <p class="text-wrapper-5">{{ item.value }}</p>
         </div>
       </div>
     </div>
 
-    <img class="img" src="/img/capital-header.png" alt="Capital.com hero" />
-  </div>
+    <img
+      class="img"
+      :src="capitalCaseHero.imageSrc"
+      :alt="capitalCaseHero.imageAlt"
+    />
+  </section>
 </template>
 
 <style scoped>
+.capital-case-hero {
+  display: grid;
+  grid-template-columns: 337px 934px;
+  width: 1920px;
+  min-height: 1160px;
+  padding: 76px 52px 0;
+  column-gap: 415px;
+}
+
 .text-wrapper-3 {
-  position: absolute;
-  top: 204px;
-  left: 52px;
   width: 337px;
+  margin-top: 128px;
   font-family: 'Inter', Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size: 60px;
@@ -43,9 +57,7 @@ import { capitalCaseMeta } from '../../data/capitalCase'
   flex-direction: column;
   align-items: flex-start;
   gap: 60px;
-  position: absolute;
-  top: 204px;
-  left: 804px;
+  margin-top: 128px;
 }
 
 .p {
@@ -103,12 +115,10 @@ import { capitalCaseMeta } from '../../data/capitalCase'
 }
 
 .img {
-  position: absolute;
-  top: 508px;
-  left: 50%;
+  grid-column: 1 / -1;
   width: 1816px;
   height: 652px;
-  transform: translateX(-50%);
+  margin: 188px auto 0;
   object-fit: cover;
   object-position: center;
 }

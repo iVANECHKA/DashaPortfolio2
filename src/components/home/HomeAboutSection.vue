@@ -1,13 +1,5 @@
 <script setup>
-const about = {
-  title: 'ОБО МНЕ',
-  imageSrc: 'img/profile-pic.png',
-  imageAlt: 'Портрет Дарьи Кормилицыной',
-  paragraphs: [
-    'Но семантический разбор внешних противодействий требует анализа поставленных обществом задач. Повседневная практика показывает,',
-    'Но семантический разбор внешних противодействий требует анализа поставленных обществом задач. Повседневная практика показывает,',
-  ],
-}
+import { homeAboutContent } from '../../data/siteContent'
 </script>
 
 <template>
@@ -19,19 +11,19 @@ const about = {
     <div class="about-section__image-frame">
       <img
         class="about-section__image"
-        :src="about.imageSrc"
-        :alt="about.imageAlt"
+        :src="homeAboutContent.imageSrc"
+        :alt="homeAboutContent.imageAlt"
       />
     </div>
 
     <div class="about-section__content">
       <h2 id="about-title" class="about-section__title">
-        {{ about.title }}
+        {{ homeAboutContent.title }}
       </h2>
 
       <div class="about-section__paragraphs">
         <p
-          v-for="(paragraph, index) in about.paragraphs"
+          v-for="(paragraph, index) in homeAboutContent.paragraphs"
           :key="index"
           class="about-section__paragraph"
           :class="{ 'about-section__paragraph--first': index === 0 }"

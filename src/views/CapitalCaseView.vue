@@ -1,6 +1,4 @@
 <script setup>
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
-
 import CapitalCaseConcept from '../components/capital-case/CapitalCaseConcept.vue'
 import CapitalCaseFeatureBlocks from '../components/capital-case/CapitalCaseFeatureBlocks.vue'
 import CapitalCaseFooter from '../components/capital-case/CapitalCaseFooter.vue'
@@ -8,25 +6,9 @@ import CapitalCaseHeader from '../components/capital-case/CapitalCaseHeader.vue'
 import CapitalCaseHero from '../components/capital-case/CapitalCaseHero.vue'
 import CapitalCaseNarrative from '../components/capital-case/CapitalCaseNarrative.vue'
 import CapitalCaseResults from '../components/capital-case/CapitalCaseResults.vue'
+import { useViewportScale } from '../composables/useViewportScale'
 
-const viewportRef = ref(null)
-const viewportWidth = ref(1920)
-
-const updateScale = () => {
-  const width = viewportRef.value?.clientWidth ?? window.innerWidth
-  viewportWidth.value = width
-}
-
-onMounted(() => {
-  updateScale()
-  window.addEventListener('resize', updateScale)
-})
-
-onBeforeUnmount(() => {
-  window.removeEventListener('resize', updateScale)
-})
-
-const caseScale = computed(() => Math.min(1, viewportWidth.value / 1920))
+const { viewportRef, scale: caseScale } = useViewportScale()
 </script>
 
 <template>
@@ -76,8 +58,7 @@ const caseScale = computed(() => Math.min(1, viewportWidth.value / 1920))
   overflow: hidden;
   width: 1920px;
   min-height: 8759px;
-  position: absolute;
-  inset: 0 auto auto 0;
+  position: relative;
   transform: scale(var(--case-scale));
   transform-origin: top left;
 }

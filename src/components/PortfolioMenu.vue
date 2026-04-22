@@ -1,5 +1,9 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+import {
+  primaryNavigationLinks,
+  siteBrand,
+} from '../data/siteContent'
 
 defineProps({
   variant: {
@@ -7,42 +11,39 @@ defineProps({
     default: 'home',
   },
 })
-
-const navLinks = [
-  { to: { path: '/', hash: '#projects' }, label: 'ПРОЕКТЫ' },
-  { to: { path: '/', hash: '#about' }, label: 'ОБО МНЕ' },
-]
 </script>
 
 <template>
   <template v-if="variant === 'case'">
-    <RouterLink class="case-brand" to="/">
-      ДАРЬЯ КОРМИЛИЦЫНА
-    </RouterLink>
-
-    <div class="case-nav">
-      <RouterLink
-        v-for="link in navLinks"
-        :key="link.label"
-        class="case-link"
-        :to="link.to"
-      >
-        {{ link.label }}
+    <header class="case-header">
+      <RouterLink class="case-brand" to="/">
+        {{ siteBrand }}
       </RouterLink>
-    </div>
 
-    <a class="case-contacts" href="#contacts">КОНТАКТЫ</a>
+      <div class="case-nav">
+        <RouterLink
+          v-for="link in primaryNavigationLinks"
+          :key="link.label"
+          class="case-link"
+          :to="link.to"
+        >
+          {{ link.label }}
+        </RouterLink>
+      </div>
+
+      <a class="case-contacts" href="#contacts">КОНТАКТЫ</a>
+    </header>
   </template>
 
   <header v-else class="site-header">
     <div class="site-header__content">
       <RouterLink class="site-header__brand" to="/">
-        ДАРЬЯ КОРМИЛИЦЫНА
+        {{ siteBrand }}
       </RouterLink>
 
       <nav aria-label="Основная навигация" class="site-header__nav">
         <RouterLink
-          v-for="link in navLinks"
+          v-for="link in primaryNavigationLinks"
           :key="link.label"
           :to="link.to"
           class="site-header__link"
@@ -69,10 +70,16 @@ const navLinks = [
   text-decoration: none;
 }
 
+.case-header {
+  display: grid;
+  grid-template-columns: 337px 1fr auto;
+  align-items: start;
+  width: 1920px;
+  padding: 52px 52px 0;
+  column-gap: 415px;
+}
+
 .case-brand {
-  position: absolute;
-  top: 52px;
-  left: 52px;
   font-family: 'Raleway', Helvetica, Arial, sans-serif;
   font-size: 24px;
   font-weight: 500;
@@ -85,9 +92,6 @@ const navLinks = [
   display: inline-flex;
   align-items: center;
   gap: 48px;
-  position: absolute;
-  top: 52px;
-  left: 804px;
 }
 
 .case-link {
@@ -103,9 +107,6 @@ const navLinks = [
 }
 
 .case-contacts {
-  position: absolute;
-  top: 52px;
-  left: 1738px;
   font-family: 'Raleway', Helvetica, Arial, sans-serif;
   font-size: 24px;
   font-weight: 500;
